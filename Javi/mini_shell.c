@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <sys/stat.h>
+#include <fcntl.h>
 void conthand(int handle_signal);
 /**
  * conthand - That handle the signal of ^C.
@@ -12,11 +13,11 @@ void conthand(int handle_signal);
  *
  * Return: Void Funtion.
  */
-void conthand(int handle_signal)
-{
-	if (handle_signal)
-		write(STDIN_FILENO, "\n#cisfun$ ", 10);
-}
+// void conthand(int handle_signal)
+// {
+// 	if (handle_signal)
+// 		write(STDIN_FILENO, "\n#cisfun$ ", 10);
+// }
 
 int main(int argc, char **argv, char *env[])
 {
@@ -34,10 +35,10 @@ int main(int argc, char **argv, char *env[])
     }
     while (1)
     {
-        printf("1");
-        printf("#cisfun$ ");
-        
+        write(STDIN_FILENO, "#cisfun$ ", 10);
         read = getline(&line, &bufsize, stdin);
+        if (*line != '\n')
+        {
         //tests 
         if (read < 0)
         {
@@ -47,22 +48,22 @@ int main(int argc, char **argv, char *env[])
 
         token = strtok(line, "\n");
         position++;
-        void conthand(token);
-        // while (token != NULL)
+        //void conthand(token);
+        //  while (token != NULL)
         // {
         //     args[position] = token;
-        //     position++;
+        //      position++;
 
-        //     token = strtok(NULL, " \r\t\n\a");
-        // }
-        // args[position] = NULL;
+        //      token = strtok(NULL, " \r\t\n\a");
+        //  }
+        //  args[position] = NULL;
         //args = args;
 
         child_pid = fork();
         if (child_pid == 0)
         {
             args[0] = line;
-            if (execve(args[0], &argv[0], env[0]) == -1)
+            if (execve(args[0], args, NULL) == -1)
             {
                 perror("./shell: ");
             }
@@ -73,6 +74,13 @@ int main(int argc, char **argv, char *env[])
             }
         }
     }
+    else
+    {
+        // write(STDIN_FILENO, "#cisfun$ ", 10);
+    }
+    }
+    
+    
     free(line);
     free(args);
     return (0);
