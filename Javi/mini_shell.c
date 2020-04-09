@@ -18,20 +18,20 @@ void conthand(int handle_signal)
     if (handle_signal)
         write(STDIN_FILENO, "\n#cisfun$ ", 10);
 }
-void _execute(char **args)
+
+void _execute(char *args[])
 {
     pid_t child_pid;
     int status;
 
-    child_pid = fork();
     //printf("%d\n", child_pid);
-    if (child_pid == 0)
+    if ((child_pid = fork()) == 0)
     {
         if (execve(args[0], args, NULL) == -1)
         {
-            perror("./shell");
+            perror("->Error:");
         }
-        args[0] = NULL;
+        //args[0] = NULL;
         //printf("\nls de salida%s", args[0]);
     }
     else
@@ -80,11 +80,13 @@ int main(int argc, char **argv, char *env[])
 {
     char *line = NULL;
     size_t bufsize = 0, read;
-    int position = 0;
-    char **args = malloc(bufsize * sizeof(char *)); //asignamos memoria par no quedarnos cortos
-    char *token;                                    //para guardar un solo argumento
+    int position = 0, i = 0;
+    //char **args = malloc(bufsize * sizeof(char *)); //asignamos memoria par no quedarnos cortos
+    char *args[10];
+    char *token; //para guardar un solo argumento
     pid_t child_pid = 1;
     int status;
+    //pid_t child_pid;
     //line = malloc(bufsize * sizeof(char));
 
     // if (line == NULL)
@@ -94,10 +96,17 @@ int main(int argc, char **argv, char *env[])
     while (1)
     {
 
-        if (isatty(STDIN_FILENO))
+        if (isatty(STDIN_FILENO) == 1)
             write(STDOUT_FILENO, "#cisfun$ ", 10);
+
         read = getline(&line, &bufsize, stdin);
         //if (*line = '\n')
+        if (read == -1)
+        {
+            write(STDOUT_FILENO, "\n", 1);
+            free(line);
+            return (0);
+        }
 
         //printf(":%s, %zu\n", line, read);
         //void conthand(int handle_signal);
@@ -105,37 +114,39 @@ int main(int argc, char **argv, char *env[])
         if (*line != '\n')
         {
 
-            if (read == -1)
-            {
-                write(STDOUT_FILENO, "\n", 1);
-                exit(0);
-            }
             //    if (line == NULL)
             //     return (0);
 
-            token = strtok(line, " \r\t\n\a");
-            while (token != NULL)
+            token = strtok(line, " \r\t\n");
+            for (position = 0; position < 10 && token != NULL; position++)
             {
-                args[position] = _strdup(token);
-                position++;
-
-                token = strtok(NULL, " \r\t\n\a");
+                args[position] = token;/* _strdup(token);*/
+                token = strtok(NULL, " \r\t\n");
             }
             //printf("%s", args[0]);
-            //args[position] = NULL;
+            args[position] = NULL;
             //printf("ls entrada %s", args[0]);
             _execute(args);
-            //free(line);
-            free(args);
-           
-            free(args[0]);
+          
+            position = 0;
+
+			while (position < 10)
+			{
+				args[position] = 0;
+			    position++;
+			}
         }
-        else
-        {
-            // write(STDIN_FILENO, "#cisfun$ ", 10);
-        }
+       
     }
 
-   
+    position = 0;
+    while(i < 10)
+    {
+        free(args[position]);
+        position++;
+    }
+    free(args);
+    free(line);
+
     return (0);
 }
