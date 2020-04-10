@@ -23,6 +23,7 @@ void _execute(char *args[])
 {
     pid_t child_pid;
     int status;
+    // int i;
 
     //printf("%d\n", child_pid);
     if ((child_pid = fork()) == 0)
@@ -30,7 +31,9 @@ void _execute(char *args[])
         if (execve(args[0], args, NULL) == -1)
         {
             perror("->Error:");
+            exit(127);
         }
+        
         //args[0] = NULL;
         //printf("\nls de salida%s", args[0]);
     }
@@ -103,7 +106,8 @@ int main(int argc, char **argv, char *env[])
         //if (*line = '\n')
         if (read == -1)
         {
-            write(STDOUT_FILENO, "\n", 1);
+            if (isatty(STDIN_FILENO))
+                write(STDOUT_FILENO, "\n", 1);
             free(line);
             return (0);
         }
@@ -123,10 +127,16 @@ int main(int argc, char **argv, char *env[])
                 args[position] = token;/* _strdup(token);*/
                 token = strtok(NULL, " \r\t\n");
             }
+            
             //printf("%s", args[0]);
             args[position] = NULL;
             //printf("ls entrada %s", args[0]);
-            _execute(args);
+            if (args && args[0])
+            {
+                _execute(args);
+            }
+            
+            
           
             position = 0;
 
