@@ -1,42 +1,5 @@
 #include "shell.h"
 
-void conthand(int handle_signal);
-/**
- * conthand - That handle the signal of ^C.
- * @handle_signal: The signal that enters..
- *
- * Return: Void Funtion.
- */
-void conthand(int handle_signal)
-{
-    if (handle_signal)
-        write(STDIN_FILENO, "\n#cisfun$ ", 10);
-}
-
-void _execute(char *args[])
-{
-    pid_t child_pid;
-    int status;
-    // int i;
-
-    //printf("%d\n", child_pid);
-    if ((child_pid = fork()) == 0)
-    {
-        if (execve(args[0], args, NULL) == -1)
-        {
-            perror("->Error:");
-            exit(127);
-        }
-        
-        //args[0] = NULL;
-        //printf("\nls de salida%s", args[0]);
-    }
-    else
-    {
-        wait(&status);
-    }
-}
-
 char *_strdup(char *str)
 {
     int i, count;
