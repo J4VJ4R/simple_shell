@@ -1,9 +1,9 @@
 #include "shell.h"
 
 /**
- * _execute - Function that execute with arguments.
- * @args: Args enter in the keypad.
- * @status: Status of the execute arguments.
+ * _execute - Function that execute the arguments.
+ * @args: The arguments to read and will execute..
+ * @status: The status of the arguments.
  * Return: Void Funtion.
  */
 
@@ -21,7 +21,7 @@ void _execute(char *args[])
             perror("->Error:");
             exit(127);
         }
-
+        
         //args[0] = NULL;
         //printf("\nls de salida%s", args[0]);
     }
@@ -29,5 +29,4 @@ void _execute(char *args[])
     {
         wait(&status);
     }
-
 }
