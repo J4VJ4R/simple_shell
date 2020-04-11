@@ -1,4 +1,10 @@
 #include "shell.h"
+/**
+ * tokens - Function that split a line of arguments.
+ * @args: List of args.
+ * @line: Line of arguments.
+ * Return: Void Funtion.
+ */
 
 void tokens(char *line, char **args)
 {
@@ -8,12 +14,19 @@ void tokens(char *line, char **args)
 	token = strtok(line, " \r\t\n");
 
 	for (position = 0; position < 10 && token != NULL; position++)
- 	{
+	{
 		args[position] = token;
 		token = strtok(NULL, " \r\t\n");
 	}
 	args[position] = NULL;
 }
+/**
+ * main - Execute depends of type format.
+ * @argv: Argv.
+ * @argc: Argc
+ * @env: Env.
+ * Return: Void Funtion.
+ */
 int main(int argc, char **argv, char *env[])
 {
 	char *line = NULL, *args[10], *token;
