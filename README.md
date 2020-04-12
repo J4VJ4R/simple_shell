@@ -9,14 +9,22 @@ simple_shell starts its process initially when the ./shell command is run in the
 
 # Non-interactive mode:
 Is a command line interpreter E.x:
+
 $ gcc -Wall -Werror -Wextra -pedantic *.c -o ./shell
+
 $ echo "/bin/ls" | ./shell
+
 AUTHORS _execute.c counthand.c shell.h mini_shell.c man_1_simple_shell README.md 
 $
 # Interactive mode:
 Is a command line interpreter Ex:
+
 $ gcc -Wall -Werror -Wextra -pedantic .c -o ./shell
+
 $ ./shell
+
 #cisfun$ ls
+
 AUTHORS _execute.c counthand.c shell.h mini_shell.c man_1_simple_shell README.md 
+
 #cisfun$
