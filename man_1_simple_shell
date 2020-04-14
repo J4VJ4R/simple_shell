@@ -1,0 +1,85 @@
+.\" Manpage for Simple Shell.
+.\" Contacts Luis Alejandro Marín 1568@holbertonschool.com.
+.\"          Javier Jaramillo 1604@holbertonschool.com.
+.TH "hsh Simple Shell" 1 "15 Abril 2020" "1.0"
+
+.SH NAME
+hsh - Luis Marin - Javier Jaramillo - Simple Shell
+
+.SH SYNOPSIS
+hsh (Basic shell that allows the entry of commands with simple arguments)
+
+.SH DESCRIPTION
+The project is presented to solve the end of term activity of Holberton School, this is intended to solve 
+the task of creating a basic minishel that allows the entry of arguments and can be read and executed by this
+shell to show the results per screen.
+
+.SH RETURN VALUE
+The return value is based on each of the errors previously configured in our system and also a preconfigured CONTROL + D to stop the operation created.
+
+.SH SYNTAX
+#cisfun$ <command> <flags or options> <argument 1> <argument 2> ...
+OR NON-INTERACTIVE MODE:
+$ echo <command> | ./hsh
+.SS
+
+Interactive mode:
+EXAMPLE 1:
+
+$ ./hsh
+
+#cisfun$ /bin/ls
+
+hsh main.c shell.c
+
+#cisfun$
+
+#cisfun$ exit
+
+$
+.SS
+
+Non-Interactive mode:
+
+$ echo "/bin/ls" | ./hsh
+
+hsh main.c shell.c test_ls_2
+
+$
+
+$ cat test_ls_2
+
+/bin/ls
+
+/bin/ls
+
+$
+
+$ cat test_ls_2 | ./hsh
+
+hsh main.c shell.c test_ls_2
+
+hsh main.c shell.c test_ls_2
+
+$
+.SS
+
+.SH SEE ALSO
+DASH(1)
+
+.SH BUGS
+No known bugs
+
+.SH AUTHORS
+Luis Marín
+    1528@holbertonschool.com
+    
+Javier Javier
+    1604@holbertonschool.com
+
+
+
+
+
+
+
