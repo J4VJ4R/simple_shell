@@ -7,6 +7,6 @@
  */
 void conthand(int handle_signal)
 {
-    if (handle_signal)
-        write(STDIN_FILENO, "\n#cisfun$ ", 10);
+	if (handle_signal)
+		write(STDIN_FILENO, "\n#cisfun$ ", 10);
 }

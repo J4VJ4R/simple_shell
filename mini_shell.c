@@ -49,24 +49,21 @@ int main(int argc, char **argv, char *env[])
 			return (0);
 		}
 		if (strcmp(line, "exit\n") == 0)
-            exit(0);
+			exit(0);
 		if (*line != '\n')
 		{
 			tokens(line, args);
 			_execute(args);
 			position = 0;
 			while (position < 10)
-			{	args[position] = 0;
+			{
+				args[position] = 0;
 				position++;
 			}
 		}
 	}
-	position = 0;
-	while (i < 10)
-	{
-		free(args[position]);
-		position++;
-	}
 	free(args);
+	(void)i;
 	return (0);
 }
+
