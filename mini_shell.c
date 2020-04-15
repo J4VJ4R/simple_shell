@@ -33,7 +33,6 @@ int main(int argc, char **argv, char *env[])
 	size_t bufsize = 0;
 	int position = 0, i = 0, read;
 	(void)argc;
-	(void)env;
 	(void)argv;
 
 	while (1)

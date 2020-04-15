@@ -38,7 +38,7 @@ void _execute(char *args[])
 	child_pid = fork();
 	if (child_pid == 0)
 	{
-		if (execve(args[0], args, NULL) == -1)
+		if (execve(args[0], args, env) == -1)
 		{
 			perror("./shell");
 			while (args[i])
