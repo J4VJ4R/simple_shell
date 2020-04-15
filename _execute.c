@@ -13,10 +13,8 @@ int verification(char **args)
 		j = 0;
 		while (*(args[i] + j) != '\0')
 		{
-			printf("%d ", *(args[i] + j));
 			j++;
 		}
-		printf("\n");
 		i++;
 	}
 	if (i > 0)
@@ -35,7 +33,6 @@ void _execute(char *args[])
 	int status = 0, i = 0, box = 0;
 
 	box = verification(args);
-	printf("valor de box: %d", box);
 	if (box == 1)
 		return;
 	child_pid = fork();

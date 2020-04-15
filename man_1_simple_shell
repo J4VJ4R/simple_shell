@@ -10,7 +10,7 @@ hsh - Luis Marin - Javier Jaramillo - Simple Shell
 hsh (Basic shell that allows the entry of commands with simple arguments)
 
 .SH DESCRIPTION
-The project is presented to solve the end of term activity of Holberton School, this is intended to solve 
+The project is presented to solve the end of term activity of Holberton School, this is intended to solve
 the task of creating a basic minishel that allows the entry of arguments and can be read and executed by this
 shell to show the results per screen.
 
@@ -73,7 +73,6 @@ No known bugs
 .SH AUTHORS
 Luis Marín
     1528@holbertonschool.com
-    
 Javier Javier
     1604@holbertonschool.com
 
