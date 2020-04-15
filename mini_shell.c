@@ -52,7 +52,7 @@ int main(int argc, char **argv, char *env[])
 		if (*line != '\n')
 		{
 			tokens(line, args);
-			_execute(args);
+			_execute(args, env);
 			position = 0;
 			while (position < 10)
 			{

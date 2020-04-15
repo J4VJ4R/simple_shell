@@ -11,7 +11,7 @@
 #include <fcntl.h>
 
 void conthand(int handle_signal);
-void _execute(char *args[]);
+void _execute(char *args[], char *env[]);
 char *_strdup(char *str);
 char **tokenizar(char *line);
 #endif
