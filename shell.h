@@ -11,6 +11,7 @@
 #include <fcntl.h>
 
 void conthand(int handle_signal);
+int string_len(char *s);
 void _execute(char *args[], char *env[]);
 int _getchar(void);
 size_t _getline(char **line)
