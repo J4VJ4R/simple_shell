@@ -12,6 +12,7 @@
 
 void conthand(int handle_signal);
 int _getchar(void);
+size_t _getline(char **line)
 void _execute(char *args[]);
 char *_strdup(char *str);
 char **tokenizar(char *line);
