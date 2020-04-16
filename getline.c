@@ -27,7 +27,7 @@ size_t _getline(char **line)
 
 	if (*line == NULL)
 	{
-		_printf("Line is NULL\n");
+		write(STDOUT_FILENO, "Line is NULL", 13);
 		return (-1);
 	}
 	while (1)
