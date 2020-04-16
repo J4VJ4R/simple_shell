@@ -18,4 +18,5 @@ size_t _getline(char **line);
 char *_strdup(char *str);
 char **tokenizar(char *line);
 int _strcmp(char *s1, char *s2);
+
 #endif
