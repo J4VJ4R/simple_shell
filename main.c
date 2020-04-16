@@ -47,7 +47,7 @@ int main(int argc, char **argv, char *env[])
 			free(line);
 			return (0);
 		}
-		if (strcmp(line, "exit\n") == 0)
+		if (_strcmp(line, "exit\n") == 0)
 			exit(0);
 		if (*line != '\n')
 		{
